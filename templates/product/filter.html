@@ -1,0 +1,39 @@
+{% extends 'layout/base.html' %}
+ 
+    {% block container %}
+
+        <h3>{{ product['name'] }}</h3>
+
+        <p>{{ product['category'] }}</p>
+        <p>$ {{ product['price'] }}</p>
+        <p>Filtro Default: {{ product['price'] | default ('Sin precio', True) }}</p>
+
+        <!-- Fritros en Jinja2 -->
+
+        <!--FILTRO SAFE  -->
+        <h3>Hola Mundo</h3>
+        {{ "<h1>Hola Mundo</h3>" }}
+        {{ "<h3>Hola Mundo</h3>"  | safe }}
+
+        <!--FILTRO TRUNCATE: Este filtro corta las oraciones y solo muestra las doss primeras letras y tres puntos suspensivos -->
+
+        <p>{{"Estes Texto es muy largo para mostrarlo en la vista "}}</p>
+        
+        <p>Filtro truncate: {{"Estes Texto es muy largo para moostrarlo en la vista" | truncate(23) }} </p>
+
+        <!-- FILTRO COUNT: CUENTA LA CANTIDAD DE CARACTERES-->
+        <p>Filtro count: {{"Estes Texto es muy largo para moostrarlo en la vista"| count}} </p>
+
+        <!--FILTRO FLOAT: Convierte un entrero en flotante -->
+        <p>Filtro Float: {{"70" | float}} </p>
+        <!--FILTRO INT: convierte flotante en enteo -->
+        <p>Filtro Int: {{"70.7" | int}}</p>
+        <!--FILTRO Round -->
+        <p>Filtro round 3.1415926535 en:  {{3.1415926535 | round(2) }}</p>
+        <p>Filtro join "IPhone","IPad" en : {{["IPhone","IPad"] | join(", ")}}</p>
+        <p>Filtro Length cuenta los array Ej: "IPhone","IPad" en : {{["IPhone","IPad"] | length}}</p>
+
+        <!-- Filtro tojson: converte un arreglo en un json-->
+        <p>{{ {'offer': False, 'price': 50.5,'peso': 45 } | tojson}} </p>
+        <p>{{ product | iva_filter }}</p>
+    {%endblock%}

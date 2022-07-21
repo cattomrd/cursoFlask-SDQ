@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+ 
+    {% block container %}
+        <h3>{{ product['name'] }}</h3>
+
+        <p>{{ product['category'] }}</p>
+        <p>{{ product['price'] }}</p>
+        
+        {% if product['price'] == None %}
+            <p>Sin existencia</p>
+        {% elif product['price'] >= 1000 %} 
+            <p>Precio Regular</p>
+        {%else%}
+            <p>Precio Oferta</p>   
+        {% endif %}
+    {%endblock%}

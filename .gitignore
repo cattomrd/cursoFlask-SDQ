@@ -1,0 +1,17 @@
+.env
+.flakenv
+*.pyc
+*.pyo
+env/
+venv/
+.venv
+env*
+dust/
+build
+*egg
+*egg-info
+.pytet_cache
+.idea
+docs/_buid/
+.vscode
+__pycache__/
